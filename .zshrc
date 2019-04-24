@@ -50,6 +50,7 @@ RPROMPT=$RPROMPT'${vcs_info_msg_0_}'
 
 # alias
 alias ls='ls -G'
+export LSCOLORS=gxfxcxdxbxegedabagacad
 alias ll='ls -lh'
 alias grep='grep --color=auto'
 
