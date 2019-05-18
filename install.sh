@@ -83,6 +83,7 @@ initialize() {
     brew update && brew upgrade
     [[ $? ]] && echo "$(tput setaf 2)Update Homebrew complete. ✔︎$(tput sgr0)"
 
+    cd ${DOT_DIRECTORY}
     brew bundle
   fi
 
@@ -99,8 +100,8 @@ case $command in
     link_files
     ;;
   init*)
-    initialize
     link_files
+    initialize
     ;;
   *)
     usage
