@@ -2,7 +2,7 @@
   name = yyamada12
   email = 12yacropolisy@gmail.com
 [color]
-  ui = auto
+
 [alias]
   co = checkout
   ci = commit
@@ -10,4 +10,4 @@
   bra = branch
   gr = log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative 
 [core]
-	excludesfile = /Users/yyamada/.gitignore_global
+	excludesfile = ~/.gitignore_global
