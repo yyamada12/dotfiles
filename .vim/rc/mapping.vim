@@ -24,12 +24,6 @@ nnoremap <C-j> ;<C-w>j
 nnoremap <C-k> ;<C-w>k
 nnoremap <C-l> ;<C-w>l
 
-"括弧の補完
-inoremap { {}<Left>
-inoremap {<Enter> {<CR>}<Esc><S-o>
-inoremap ' ''<LEFT>
-inoremap " ""<LEFT>
-
 "=を二回連続入力でバッファ全体をインデント整理
 nnoremap == gg=G
 
