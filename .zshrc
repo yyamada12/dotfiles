@@ -29,6 +29,9 @@ SAVEHIST=10000
 # cdコマンドを省略して、ディレクトリ名のみの入力で移動
 setopt auto_cd
 
+# cdの後lsを入力
+function chpwd() { ls }
+
 # コマンドミスを修正
 setopt correct
 
