@@ -21,8 +21,6 @@ set smartindent
 " 見た目系
 " 行番号を表示
 set number
-" 相対行番号表示
-set relativenumber
 " 現在の行を強調表示
 set cursorline
 " 行末の1文字先までカーソルを移動できるように
@@ -47,9 +45,9 @@ set list listchars=trail:␣,tab:»-
 " Tab文字を半角スペースにする
 set expandtab
 " 行頭以外のTab文字の表示幅（スペースいくつ分）
-set tabstop=2
+set tabstop=4
 " 行頭でのTab文字の表示幅
-set shiftwidth=2
+set shiftwidth=4
 
 
 " 検索系
