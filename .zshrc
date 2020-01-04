@@ -5,6 +5,6 @@ function loadlib() {
         fi
 }
 
-loadlib ./.zsh/plugin
-loadlib ./.zsh/alias
-loadlib ./.zsh/general
+loadlib ~/.zsh/plugin.zsh
+loadlib ~/.zsh/alias.zsh
+loadlib ~/.zsh/general.zsh
