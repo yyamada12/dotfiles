@@ -35,6 +35,10 @@ bash -c "$(curl -fsSL raw.github.com/yyamada12/dotfiles/master/install.sh)" -s d
 - git レポジトリのクローン
 - シンボリックリンク生成
 
+zshへの切り替えは以下のコマンド
+```bash
+sudo chsh $USER -s $(which zsh)
+```
 
 
 # deploy dotfiles
