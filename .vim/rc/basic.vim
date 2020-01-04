@@ -40,8 +40,8 @@ nnoremap j gj
 nnoremap k gk
 " スクロールの余裕を確保する
 set scrolloff=3
-" 文末のスペースを可視化
-set list listchars=trail:␣
+" 文末のスペース,タブを可視化
+set list listchars=trail:␣,tab:»-
 
 " Tab系
 " Tab文字を半角スペースにする
@@ -65,3 +65,6 @@ set wrapscan
 set hlsearch
 " ESC連打でハイライト解除
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
+
+"ファイル形式別プラグイン・インデントの有効化
+filetype plugin indent on
