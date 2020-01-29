@@ -5,6 +5,9 @@ setopt IGNOREEOF
 autoload -Uz colors
 colors
 
+# ctr + s でbck-i-search: を戻せるようにする
+stty stop undef
+
 # 補完
 autoload -Uz compinit
 compinit
