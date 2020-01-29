@@ -23,4 +23,6 @@ alias rm='rm -i'
 
 alias ctfup='cd ~/myVagrants/ubu; vagrant up && vagrant ssh'
 alias ctfs='cd ~/myVagrants/ubu/work'
-alias pwns'cd ~/work/ctf/ctfs/pwn_training2019'
+alias pwns='cd ~/work/ctf/ctfs/pwn_training2019'
+
+alias j='jump'
