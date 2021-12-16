@@ -9,14 +9,14 @@ nnoremap <silent><c-n> :NERDTreeToggle<CR>
 set backspace=indent,eol,start
 
 "macのショートカットキー
-:imap <c-b> <Left>
-:imap <c-n> <Down>
-:imap <c-p> <Up>
-:imap <c-f> <Right>
-:imap <c-d> <Delete>
-:imap <c-k> <Right><Esc>d$a
-:imap <c-e> <Esc>$a
-:imap <c-a> <Esc>^i
+" :imap <c-b> <Left>
+" :imap <c-n> <Down>
+" :imap <c-p> <Up>
+" :imap <c-f> <Right>
+" :imap <c-d> <Delete>
+" :imap <c-k> <Right><Esc>d$a
+" :imap <c-e> <Esc>$a
+" :imap <c-a> <Esc>^i
 
 " CTRL-hjklでウィンドウ移動
 nnoremap <C-h> ;<C-w>h

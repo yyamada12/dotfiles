@@ -1,5 +1,6 @@
 # go lang plugins
-[[plugins]]  # go command use as vim command :GoBuild, :GoInstall
+[[plugins]]
+# go command use as vim command :GoBuild, :GoInstall
 
 # EXECUTE `:GoInstallBinaries` AT FIRST!
 
@@ -46,7 +47,7 @@ hook_add = '''
 
     " :GoFmt時にimportのチェック Default->gofmt
     " ファイルが巨大だと保存時の:GoFmtが遅くなるので消しましょう
-    let g:go_fmt_command = "goimports"
+    let g:go_fmt_command = "goreturns"
 
     " キャメルケースに変換(defalut snake_cake)
     let g:go_addtags_transform = "camelcase"
