@@ -12,6 +12,9 @@ stty stop undef
 autoload -Uz compinit
 compinit
 
+## kubectl
+source <(kubectl completion zsh)
+
 # 他のターミナルとヒストリーを共有
 setopt share_history
 
@@ -46,5 +49,16 @@ zstyle ':vcs_info:*' actionformats '[%b|%a]'
 precmd () { vcs_info }
 RPROMPT=$RPROMPT'${vcs_info_msg_0_}'
 
+# k8s
+KUBE_PS1_SYMBOL_COLOR="null"
+KUBE_PS1_SYMBOL_USE_IMG=true
+RPROMPT=$RPROMPT'$(kube_ps1)'
+
 # incremental search
 stty stop undef
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/yyamada/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/yyamada/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/yyamada/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/yyamada/google-cloud-sdk/completion.zsh.inc'; fi
