@@ -32,3 +32,5 @@ zinit light jocelynmallon/zshmarks
 
 zinit ice wait'!0'
 zinit light zsh-users/zsh-autosuggestions
+
+zinit light jonmosco/kube-ps1
