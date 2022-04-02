@@ -8,6 +8,7 @@ alias grep='grep --color=auto'
 alias g='git'
 alias ga='git add'
 alias gd='git diff'
+alias gdc='git diff --cached'
 alias gs='git status'
 alias gp='git push'
 alias gb='git branch'
@@ -30,6 +31,16 @@ alias dc='docker-compose'
 alias dcu='docker-compose up'
 alias dcud='docker-compose up -d'
 alias dcd='docker-compose down'
+
+## k8s settings
+alias k='kubectl'
+alias kg='kubectl get'
+alias kd='kubectl describe'
+
+## terraform settings
+alias t="terraform"
+alias tp="terraform plan"
+alias ta="terraform apply"
 
 ## for safe cp, mv, rm
 alias cp='cp -i'
