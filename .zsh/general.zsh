@@ -52,7 +52,7 @@ RPROMPT=$RPROMPT'${vcs_info_msg_0_}'
 # k8s
 KUBE_PS1_SYMBOL_COLOR="null"
 KUBE_PS1_SYMBOL_USE_IMG=true
-RPROMPT=$RPROMPT'$(kube_ps1)'
+RPROMPT=$RPROMPT' $(kube_ps1)'
 
 # incremental search
 stty stop undef
