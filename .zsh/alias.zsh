@@ -42,6 +42,9 @@ alias t="terraform"
 alias tp="terraform plan"
 alias ta="terraform apply"
 
+## multipass
+alias mp="multipass"
+
 ## for safe cp, mv, rm
 alias cp='cp -i'
 alias mv='mv -i'
