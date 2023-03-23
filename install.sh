@@ -74,7 +74,7 @@ initialize() {
     echo "$(tput setaf 2)Already installed Homebrew ✔︎$(tput sgr0)"
   else
     echo "Installing Homebrew..."
-      ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   fi
 
   # install with brew
