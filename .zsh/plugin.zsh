@@ -14,16 +14,20 @@ zicompinit # <- https://wiki.zshell.dev/docs/guides/commands
 
 ### End of Zinit's installer chunk
 
-zi ice blockf wait'!0'
+zi ice blockf wait lucid depth"1"
 zi light zsh-users/zsh-completions
 
-zi ice wait'!0'
+zi ice wait lucid depth"1"
 zi light zsh-users/zsh-syntax-highlighting
 
-zi ice wait'!0'
+zi ice lucid depth"1"
 zi light jocelynmallon/zshmarks
 
-zi ice wait'!0'
+zi ice wait lucid depth"1"
 zi light zsh-users/zsh-autosuggestions
 
+zi ice wait lucid depth"1"
 zi light jonmosco/kube-ps1
+
+zi ice lucid depth"1"
+zi light zdharma/history-search-multi-word
