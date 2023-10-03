@@ -27,10 +27,10 @@ alias ggr="git log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%C
 alias d='docker'
 alias dp='docker ps'
 alias dx='docker exec -it'
-alias dc='docker-compose'
-alias dcu='docker-compose up'
-alias dcud='docker-compose up -d'
-alias dcd='docker-compose down'
+alias dc='docker compose'
+alias dcu='docker compose up'
+alias dcud='docker compose up -d'
+alias dcd='docker compose down'
 
 ## k8s settings
 alias k='kubectl'
