@@ -8,4 +8,5 @@ function loadlib() {
 loadlib ~/.zsh/plugin.zsh
 loadlib ~/.zsh/alias.zsh
 loadlib ~/.zsh/general.zsh
+loadlib ~/.zsh/local/*.zsh
 
