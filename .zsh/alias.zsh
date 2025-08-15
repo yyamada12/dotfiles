@@ -23,6 +23,9 @@ alias grebc='git rebase --continue'
 alias gl='git log'
 alias ggr="git log --all --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
 
+alias cdroot='cd "$(git rev-parse --show-toplevel)"'
+
+
 ## docker settings
 alias d='docker'
 alias dp='docker ps'
@@ -67,3 +70,4 @@ cd-fzf-find() {
 alias fd=cd-fzf-find
 alias -g RB='`git branch --all | grep -v HEAD | fzf -m | sed "s/.* //" | sed "s#remotes/[^/]*/##"`'
 alias -g B='`git branch | fzf`'
+
