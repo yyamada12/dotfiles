@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+# すでにステージングされているファイルに対して
+# EOF に改行が無ければ \n を追加して再ステージする
+
+# 変更が無ければ終了
+git diff --cached --quiet && exit 0
+
+# 追加(A)/コピー(C)/変更(M) されたファイルを対象に処理
+git diff --cached --name-only --diff-filter=ACM -z |
+while IFS= read -r -d '' file; do
+  # 通常ファイルのみ、かつテキストファイルのみを対象にする
+  [ -f "$file" ] || continue
+  grep -Iq . "$file" || continue
+
+  # EOF が改行で終わっているかチェック
+  if [ -s "$file" ] && [ "$(tail -c 1 -- "$file"| xxd -p)" != '0a' ]; then
+    printf '\n' >> "$file"       # 改行を追加
+    git add "$file"              # 修正後のファイルを再ステージ
+    echo "✏️  末尾に改行を追加: $file"
+  fi
+done
