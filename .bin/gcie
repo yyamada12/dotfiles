@@ -1,0 +1,102 @@
+#!/usr/bin/env bash
+# Usage: gcie [-f] "コミットメッセージ"
+# コミットメッセージを英語に翻訳して git commit する
+# -f をつけると自動でコミット
+# -f がない場合は、5つの選択肢から選択してコミット
+
+# オプション解析
+FAST_MODE=false
+while getopts "f" opt; do
+  case $opt in
+    f)
+      FAST_MODE=true
+      shift
+      ;;
+    \?)
+      echo "Invalid option: -$OPTARG" >&2
+      exit 1
+      ;;
+  esac
+done
+
+if [ -z "$1" ]; then
+  echo "Usage: gcie [-f] \"commit message\""
+  echo "  -f: Fast mode (single translation, no selection)"
+  exit 1
+fi
+
+MSG="$1"
+
+if [ "$FAST_MODE" = true ]; then
+
+  echo "Generating commit message ..."
+
+  # Fast mode: 翻訳結果を1つだけ返す
+  PROMPT="Translate the following text into English as a concise and clear git commit message: $MSG"
+
+  # OpenAI API で翻訳
+  TRANSLATED=$(curl -s -X POST "https://api.openai.com/v1/chat/completions" \
+    -H "Authorization: Bearer $OPENAI_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d "{
+      \"model\": \"gpt-5-mini\",
+      \"messages\": [{\"role\": \"user\", \"content\": \"$PROMPT\"}]
+    }" | jq -r '.choices[0].message.content')
+
+  # エラーチェック
+  if [ -z "$TRANSLATED" ] || [ "$TRANSLATED" = "null" ]; then
+    echo "Error: Failed to get response from OpenAI API"
+    exit 1
+  fi
+
+  # git commit 実行
+  set -x
+  git commit -m "$TRANSLATED"
+else
+  # 通常モード: 複数案を生成してfzfで選択
+
+  # fzfがインストールされているかチェック
+  if ! command -v fzf &> /dev/null; then
+    echo "Error: fzf is not installed."
+    echo "Please install fzf first:"
+    echo "  brew install fzf    # for macOS"
+    echo "  apt install fzf     # for Ubuntu/Debian"
+    echo "  yum install fzf     # for RHEL/CentOS"
+    exit 1
+  fi
+
+  echo "Generating commit message options..."
+
+  PROMPT="Generate 5 different concise and clear git commit messages in English for the following change description. Return only the 5 messages, one per line, without numbering or explanations: $MSG"
+
+  # OpenAI API で複数の案を生成
+  RAW_RESPONSE=$(curl -s -X POST "https://api.openai.com/v1/chat/completions" \
+    -H "Authorization: Bearer $OPENAI_API_KEY" \
+    -H "Content-Type: application/json" \
+    -d "{
+      \"model\": \"gpt-5-mini\",
+      \"messages\": [{\"role\": \"user\", \"content\": \"$PROMPT\"}]
+    }")
+  RESPONSE=$(echo "$RAW_RESPONSE" | jq -r '.choices[0].message.content')
+
+  # エラーチェック
+  if [ -z "$RESPONSE" ] || [ "$RESPONSE" = "null" ]; then
+    echo "Error: Failed to get response from OpenAI API"
+    echo "=== RAW RESPONSE ==="
+    echo "$RAW_RESPONSE"
+    exit 1
+  fi
+
+  # fzfで選択
+  SELECTED=$(echo "$RESPONSE" | fzf --height=10 --border --prompt="Select a commit message: ")
+
+  # 選択されなかった場合
+  if [ -z "$SELECTED" ]; then
+    echo "No commit message selected. Aborting."
+    exit 1
+  fi
+
+  # git commit 実行
+  set -x
+  git commit -m "$SELECTED"
+fi

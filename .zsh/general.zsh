@@ -65,3 +65,6 @@ complete -C '/usr/local/bin/aws_completer' aws
 
 # emacs keybind
 bindkey -e
+
+# add PATH for my bin
+export PATH="$PATH:$HOME/.bin"
